@@ -5,3 +5,22 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.movie-card {
+  height: 400px;
+  cursor: pointer;
+}
+
+.movie-overlay {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  transition: bottom 0.5s ease-in-out;
+}
+
+.movie-card:hover .movie-overlay {
+  bottom: 0;
+}
