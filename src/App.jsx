@@ -3,6 +3,7 @@ import './App.css'
 import DefaultLayout from './layouts/defaultLayout'
 import HomePage from './pages/HomePage'
 import MoviesPage from './pages/MoviesPage'
+import MovieDetailPage from './pages/MovieDetailPage'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
           <Route element={<DefaultLayout/>}>
             <Route path='/' element={<HomePage/>}/>
             <Route path='/movies' element={<MoviesPage/>}/>
+            <Route path='/movie/:slug' element={<MovieDetailPage/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
