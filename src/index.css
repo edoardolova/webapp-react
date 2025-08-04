@@ -24,3 +24,16 @@
 .movie-card:hover .movie-overlay {
   bottom: 0;
 }
+
+
+
+.btn-add-review{
+  transition: transform 0.4s ease;
+}
+
+.btn-add-review:hover {
+  transform: scale(1.2) translate(0, -15%);
+  cursor: pointer; 
+}
+
+
