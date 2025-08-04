@@ -14,6 +14,10 @@ export default function Header() {
         { id: 2,
             text: 'Movies',
             to: '/movies'
+        },
+        { id: 3,
+            text: 'Admin',
+            to: '/admin'
         }
     ];
 

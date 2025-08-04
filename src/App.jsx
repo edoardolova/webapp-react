@@ -4,6 +4,7 @@ import DefaultLayout from './layouts/defaultLayout'
 import HomePage from './pages/HomePage'
 import MoviesPage from './pages/MoviesPage'
 import MovieDetailPage from './pages/MovieDetailPage'
+import AdminPage from './pages/AdminPage'
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
             <Route path='/' element={<HomePage/>}/>
             <Route path='/movies' element={<MoviesPage/>}/>
             <Route path='/movie/:slug' element={<MovieDetailPage/>}/>
+            <Route path='/admin' element={<AdminPage/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
