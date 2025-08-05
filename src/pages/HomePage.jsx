@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ReviewsCard from "../components/ReviewsCard";
 
 export default function HomePage() {
     const [reviews, setReviews] = useState([]);
@@ -29,18 +30,7 @@ export default function HomePage() {
             <section className="container mb-5">
                 <h2 className="py-4">Le recensioni più recenti</h2>
                 <div className="row gy-4">
-                    {reviews?.map((review) => {
-                        return (
-                            <div className="col col-md-4 col-lg-3" key={review.id}>
-                                <div className="card h-100">
-                                    <div className="card-body text-center">
-                                        <h5 className="card-title">{review.name}</h5>
-                                        <p className="card-text">"{review.text}"</p>
-                                    </div>
-                                </div>
-                            </div>
-                        );
-                    })}
+                    <ReviewsCard reviews={reviews}/>
                 </div>
             </section>
 
