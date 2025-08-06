@@ -1,16 +1,10 @@
-import { useEffect, useState } from "react";
 import ReviewsCard from "../components/ReviewsCard";
+import { useContext } from "react";
+import { ReviewContext } from "../context/ReviewContext";
 
 export default function HomePage() {
-    const [reviews, setReviews] = useState([]);
+    const {reviews} = useContext(ReviewContext)
 
-    useEffect(() => {
-        fetch('http://localhost:3000/reviews')
-            .then(res => res.json())
-            .then(data => {
-                setReviews(data);
-            });
-    }, []);
 
     return (
         <>

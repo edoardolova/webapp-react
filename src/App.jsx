@@ -10,26 +10,33 @@ import AdminLayout from './layouts/AdminLayout'
 import AdminDashboard from './pages/AdminDashboard'
 
 
+import { ReviewProvider } from './context/ReviewContext'
+
+
 
 function App() {
 
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route element={<DefaultLayout/>}>
-            <Route path='/' element={<HomePage/>}/>
-            <Route path='/movies' element={<MoviesPage/>}/>
-            <Route path='/movie/:slug' element={<MovieDetailPage/>}/>
-            <Route path='*' element={<NotFound/>}/>
-          </Route>
+      <ReviewProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route element={<DefaultLayout/>}>
+              <Route path='/' element={<HomePage/>}/>
+              <Route path='/movies' element={<MoviesPage/>}/>
+              <Route path='/movie/:slug' element={<MovieDetailPage/>}/>
+              <Route path='*' element={<NotFound/>}/>
+            </Route>
 
-          <Route element={<AdminLayout/>}>
-            <Route path='/admin' element={<AdminDashboard/>}/>
+            <Route element={<AdminLayout/>}>
+              <Route path='/admin' element={<AdminDashboard/>}/>
 
-          </Route>
-        </Routes>
-      </BrowserRouter>
+            </Route>
+          </Routes>
+        </BrowserRouter>
+
+
+      </ReviewProvider>
     </>
   )
 }
