@@ -6,6 +6,10 @@ import MoviesPage from './pages/MoviesPage'
 import MovieDetailPage from './pages/MovieDetailPage'
 import AdminPage from './pages/AdminPage'
 import NotFound from './pages/NotFound'
+import AdminLayout from './layouts/AdminLayout'
+import AdminDashboard from './pages/AdminDashboard'
+
+
 
 function App() {
 
@@ -17,8 +21,12 @@ function App() {
             <Route path='/' element={<HomePage/>}/>
             <Route path='/movies' element={<MoviesPage/>}/>
             <Route path='/movie/:slug' element={<MovieDetailPage/>}/>
-            <Route path='/admin' element={<AdminPage/>}/>
             <Route path='*' element={<NotFound/>}/>
+          </Route>
+
+          <Route element={<AdminLayout/>}>
+            <Route path='/admin' element={<AdminDashboard/>}/>
+
           </Route>
         </Routes>
       </BrowserRouter>
