@@ -1,18 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import MoviesCard from "../components/MoviesCard";
-
+import {MovieContext} from '../context/MovieContext'
 export default function MoviesPage(){
+    const {movies} = useContext(MovieContext)
 
-    const [movies, setMovies] = useState([]);
 
-    useEffect(() => {
-        fetch('http://localhost:3000/movies')
-            .then(res => res.json())
-            .then(data => {
-                setMovies(data);
-            });
-    }, []);
     return(
         <>
             <section className="container mb-5">

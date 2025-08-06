@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { ReviewContext } from "../context/ReviewContext";
-
+import { MovieContext } from "../context/MovieContext";
 import MovieDetail from "../components/MovieDetail";
 import ReviewList from "../components/ReviewList";
 import ReviewForm from "../components/ReviewForm";
@@ -9,8 +9,8 @@ import ReviewForm from "../components/ReviewForm";
 export default function MovieDetailPage() {
   const { slug } = useParams();
   const { getReviewsByMovieSlug, addReview } = useContext(ReviewContext);
+  const { getMovieBySlug, selectedMovie} = useContext(MovieContext); 
 
-  const [movie, setMovie] = useState(null);
   const [reviews, setReviews] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [name, setName] = useState("");
@@ -18,31 +18,24 @@ export default function MovieDetailPage() {
   const [vote, setVote] = useState(1);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/movies/${slug}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setMovie(data);
-      });
-
-    getReviewsByMovieSlug(slug).then((data) => {
-      setReviews(data);
-    });
+    getMovieBySlug(slug);
+    getReviewsByMovieSlug(slug)
+    .then(setReviews);
   }, [slug]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const newReview = {
-      movie_id: movie.id,
+      movie_id: selectedMovie.id,
       name,
       text,
       vote,
     };
 
-    addReview(slug, newReview).then((savedReview) => {
+    addReview(slug, newReview)
+    .then((savedReview) => {
       setReviews((prev) => [...prev, savedReview]);
-
-      // Reset form
       setShowModal(false);
       setName("");
       setText("");
@@ -52,7 +45,7 @@ export default function MovieDetailPage() {
 
   return (
     <div className="container py-5">
-      <div className="row">{movie && <MovieDetail movie={movie} />}</div>
+      <div className="row">{selectedMovie && <MovieDetail movie={selectedMovie} />}</div>
 
       <div className="mt-5">
         <div className="d-flex mb-4 align-items-center">
@@ -77,4 +70,4 @@ export default function MovieDetailPage() {
       />
     </div>
   );
-} 
+}

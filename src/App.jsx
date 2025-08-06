@@ -11,6 +11,7 @@ import AdminDashboard from './pages/AdminDashboard'
 
 
 import { ReviewProvider } from './context/ReviewContext'
+import { MovieProvider } from './context/MovieContext'
 
 
 
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <>
+    <MovieProvider>
       <ReviewProvider>
         <BrowserRouter>
           <Routes>
@@ -37,6 +39,8 @@ function App() {
 
 
       </ReviewProvider>
+
+    </MovieProvider>
     </>
   )
 }
