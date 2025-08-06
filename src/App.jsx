@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage'
 import MoviesPage from './pages/MoviesPage'
 import MovieDetailPage from './pages/MovieDetailPage'
 import AdminPage from './pages/AdminPage'
+import NotFound from './pages/NotFound'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
             <Route path='/movies' element={<MoviesPage/>}/>
             <Route path='/movie/:slug' element={<MovieDetailPage/>}/>
             <Route path='/admin' element={<AdminPage/>}/>
+            <Route path='*' element={<NotFound/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
